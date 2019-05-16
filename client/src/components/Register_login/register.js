@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-
-// import FormField from '../utils/Form/formfield';
+import FormField from '../utils/Form/formfield';
 // import { update, generateData, isFormValid } from '../utils/Form/formActions';
 import { connect } from 'react-redux';
 // import { loginUser } from '../../actions/user_actions';
@@ -79,8 +78,32 @@ class Register extends Component {
 
     render() {
         return (
-            <div>
-                Register
+            <div className="page_wrapper">
+                <div className="container">
+                    <div className="register_login_container">
+                        <div className="left">
+                            <form onSubmit={(event) => this.submitForm(event)}>
+                            <h2>Personal Profile</h2>
+                                <div className="form_block_two">
+                                    <div className="block">
+                                    <FormField 
+                                        id={'name'}
+                                        formdata={this.state.formdata.name}
+                                        change={(element) => this.updateForm(element)}
+                                    />
+                                    </div>
+                                    <div className="block">
+                                    <FormField 
+                                        id={'lastname'}
+                                        formdata={this.state.formdata.lastname}
+                                        change={(element) => this.updateForm(element)}
+                                    />
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }
