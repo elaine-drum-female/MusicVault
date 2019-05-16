@@ -1,4 +1,5 @@
 import React from 'react';
+import Login from "../Register_login/login";
 import LinkButton from "../utils/button";
 
 const RegisterLogin = () => {
@@ -19,7 +20,9 @@ const RegisterLogin = () => {
                        />
                    </div>
                    <div className="right">
-
+                        <h2>Registered customers</h2>
+                        <p>If you have an account please log in.</p>
+                        <Login />
                    </div>
                </div> 
             </div>
