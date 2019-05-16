@@ -51,8 +51,8 @@ app.get('/api/product/articles_by_id',(req,res)=>{
 
     Product.
     find({ '_id':{$in:items}}). // this takes a single value or array
-    // populate('brand').
-    // populate('wood').
+    populate('brand').
+    populate('wood').
     exec((err,docs)=>{
         return res.status(200).send(docs)
     });
