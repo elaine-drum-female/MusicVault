@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Header from '../components/Header_Footer/Header';
+import Footer from '../components/Header_Footer/Footer';
 
 class Wrapper extends Component {
     render() {
@@ -9,7 +10,7 @@ class Wrapper extends Component {
                 <div className="page_container">
                     {this.props.children}
                 </div>
-                Footer
+                <Footer/>
             </div>
         );
     }
