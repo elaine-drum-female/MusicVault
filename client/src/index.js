@@ -6,11 +6,23 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux'; //Connects to redux to use
+import { createStore, applyMiddleware} from 'redux';
+import promiseMiddleware from 'redux-promise';
+import ReduxThunk from 'redux-thunk';
+
+import Reducer from './reducers';
+const storeMiddleWare = applyMiddleware(
+    promiseMiddleware, ReduxThunk)(createStore);
+
 
 ReactDOM.render(
-<BrowserRouter>
-    <App />
-</BrowserRouter>
+<Provider store={storeMiddleWare(Reducer, 
+window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())}>
+    <BrowserRouter>
+        <App />
+    </BrowserRouter>
+</Provider>
 , document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
