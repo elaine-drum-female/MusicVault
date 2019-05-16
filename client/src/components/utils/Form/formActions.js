@@ -27,7 +27,13 @@ export const update = (element, formdata, formName ) => {
 
     newElement.value = element.event.target.value;
 
-    
+    if(element.blur) {
+        let validData = validate(newElement, formdata);
+        newElement.valid = validData[0];
+        newElement.validationMessage = validData[0];
+    }
+
+    newElement.touched = element.blur;
     newFormdata[element.id] = newElement;
 
     return newFormdata;
