@@ -37,7 +37,25 @@ app.post('/api/users/register', (req, res) => {
    });
 });
 
+app.post('/api/users/login', (req, res) => {
+    // Find the email
+        User.findOne({'email': req.body.email}, (err, user) => {
+            // If no user then send a message
+            if(!user) return res.json({loginSuccess: false, message: 'Auth failed. Email not found!'});
+            //Compare password and state whether it matches or not
+            user.comparePassword(req.body.password, (err, doesMatch) => {
+                if(!doesMatch) return res.json({loginSuccess: false, message: 'Wrong password'});
 
+            user.generateToken((err, user) => {
+                if(err) return res.status(400).send(err);
+                res.cookie('x_auth' , user.token).status(200).json({
+                    loginSuccess: true
+                    });
+                });
+            });
+        });
+  
+});
 
 
 
