@@ -65,6 +65,14 @@ userSchema.pre('save', function(next) {
     }
 });
 
+//Created the comparePassword method
+userSchema.methods.comparePassword = function(hasNoHash, cb) {
+    bcrypt.compare(hasNoHash, this.password, function(err, doesMatch) {
+        if(err) return cb(err);
+        cb(null, doesMatch);
+    });
+}
+
 const User = mongoose.model('User', userSchema);
 
 module.exports = { User }
