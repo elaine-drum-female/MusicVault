@@ -125,7 +125,22 @@ class Register extends Component {
                                     />
                                 </div>
                                 <h2>Verify Password</h2>
-                                <div className="form_block_two"></div>
+                                <div className="form_block_two">
+                                    <div className="block">
+                                    <FormField 
+                                        id={'password'}
+                                        formdata={this.state.formdata.password}
+                                        change={(element) => this.updateForm(element)}
+                                    />
+                                    </div>
+                                    <div className="block">
+                                    <FormField 
+                                        id={'confirmpassword'}
+                                        formdata={this.state.formdata.confirmPassword}
+                                        change={(element) => this.updateForm(element)}
+                                    />
+                                    </div>
+                                </div>
                             </form>
                         </div>
                     </div>
