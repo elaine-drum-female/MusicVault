@@ -32,6 +32,33 @@ const { admin } = require('./middleware/admin');
 //             PRODUCTS
 //=================================
 
+/// /api/product/article?id=HSHSHSKSK,JSJSJSJS,SDSDHHSHDS,JSJJSDJ&type=single
+app.get('/api/product/articles_by_id',(req,res)=>{
+    // Searching for the query type
+    let type = req.query.type;
+    // Starting with the id
+    let items = req.query.id;
+
+    if(type === "array"){
+        //Split the ids with a comma
+        let ids = req.query.id.split(',');
+        items = [];
+        items = ids.map(item=>{
+            // Return the item and pass it into items[] convert to objectID in database
+            return mongoose.Types.ObjectId(item)
+        });
+    }
+
+    Product.
+    find({ '_id':{$in:items}}). // this takes a single value or array
+    // populate('brand').
+    // populate('wood').
+    exec((err,docs)=>{
+        return res.status(200).send(docs)
+    });
+});
+
+
 app.post('/api/product/article',auth,admin,(req,res)=>{
     const product = new Product(req.body);
 
