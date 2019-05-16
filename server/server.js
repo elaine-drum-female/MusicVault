@@ -42,6 +42,13 @@ app.post('/api/product/brand',auth,admin,(req,res)=>{
     });
 });
 
+app.get('/api/product/getbrands', (req, res) => {
+    Brand.find({}, (err, getbrands) => {
+        if(err) return res.status(400).send(err);
+        res.status(200).send(getbrands);
+    });
+});
+
 //==================================
 //           USERS
 //==================================
