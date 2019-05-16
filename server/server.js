@@ -21,10 +21,33 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/waves");
 // Models
 const { User } = require('./models/user');
 const { Brand } = require('./models/brand');
+const { Wood } = require('./models/wood');
 
 // Middleware
 const { auth } = require('./middleware/auth');
 const { admin } = require('./middleware/admin');
+
+
+//==================================
+//           WOODs
+//==================================
+app.post('/api/product/wood', auth, admin,(req, res) => {
+    const wood = new Wood(req.body);
+    wood.save((err, docs)=> {
+        if(err) return res.json({success: false, err});
+        res.status(200).json({
+            success:true,
+            wood: docs
+        });
+    });
+});
+
+app.get('/api/product/woods' , (req, res)=> {
+    Wood.find({}, (err, woods)=> {
+        if(err) return res.status(400).send(err);
+        res.status(200).send(woods);
+    });
+})
 
 //==================================
 //           BRAND
@@ -71,7 +94,8 @@ app.post('/api/users/register', (req, res) => {
    user.save((err, doc) => {
     if(err) return res.json({success: false, err});
     res.status(200).json({
-        success:true
+        success:true,
+        userdata: doc
     });
    });
 });
