@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import FormField from '../utils/Form/formfield';
-// import { update, generateData, isFormValid } from '../utils/Form/formActions';
+import { update, generateData, isFormValid } from '../utils/Form/formActions';
 import { connect } from 'react-redux';
-// import { loginUser } from '../../actions/user_actions';
+//import { loginUser } from '../../actions/user_actions';
 
 class Register extends Component {
     state = {
@@ -31,7 +31,7 @@ class Register extends Component {
                 config:{
                     name: 'lastname_input',
                     type: 'text',
-                    placeholder: 'Please enter your lastname'
+                    placeholder: 'Please enter your last name'
                 },
                 validation:{
                     required: true
@@ -93,6 +93,30 @@ class Register extends Component {
         }
     }
 
+    updateForm = (element) => {
+        const newFormdata = update(element,this.state.formdata,'register');
+        this.setState({
+            formError: false,
+            formdata: newFormdata
+        });
+    }
+
+    submitForm = (event) => {
+        event.preventDefault();
+        
+        let dataToSubmit = generateData(this.state.formdata,'register');
+        let formIsValid = isFormValid(this.state.formdata,'register')
+
+        if(formIsValid) {
+                console.log(dataToSubmit);
+               } else {
+                    this.setState({
+                        formError :true
+                    })
+               }
+           }
+    
+    
     render() {
         return (
             <div className="page_wrapper">
@@ -141,6 +165,18 @@ class Register extends Component {
                                     />
                                     </div>
                                 </div>
+                                <div>
+                                { this.state.formError ?
+                                    <div className="error_label">
+                                        Please check your data
+                                    </div>
+                                :null}
+                                <button onClick={(event)=> this.submitForm(event)}>
+                                    Make an account
+                                </button> 
+
+                                </div>
+
                             </form>
                         </div>
                     </div>
