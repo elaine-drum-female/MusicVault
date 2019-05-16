@@ -46,7 +46,7 @@ class Login extends Component {
         }
     }
 
-    updateform = (element) => {
+    updateForm = (element) => {
         const newFormdata = update(element,this.state.formdata,'login');
         this.setState({
             formError: false,
@@ -54,8 +54,8 @@ class Login extends Component {
         });
     }
 
-    submitForm = (e) => {
-        e.preventDefault();
+    submitForm = (event) => {
+        event.preventDefault();
         
         let dataToSubmit = generateData(this.state.formdata,'login');
         let formIsValid = isFormValid(this.state.formdata,'login')
@@ -83,16 +83,16 @@ class Login extends Component {
     render() {
         return (
             <div className="signin_wrapper">
-                <form onSubmit={(e) => this.submitForm(e)}>
+                <form onSubmit={(event) => this.submitForm(event)}>
                     <FormField 
                         id={'email'}
                         formdata={this.state.formdata.email}
-                        change={(element) => this.updateform(element)}
+                        change={(element) => this.updateForm(element)}
                     />
                     <FormField 
                         id={'password'}
                         formdata={this.state.formdata.password}
-                        change={(element) => this.updateform(element)}
+                        change={(element) => this.updateForm(element)}
                     />
 
                         { this.state.formError ?
