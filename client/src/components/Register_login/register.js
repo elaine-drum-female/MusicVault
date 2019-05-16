@@ -41,6 +41,23 @@ class Register extends Component {
                 validationMessage:''
             },
 
+            email: {
+                element: 'input',
+                value: '',
+                config:{
+                    name: 'email_input',
+                    type: 'email',
+                    placeholder: 'Enter your email'
+                },
+                validation:{
+                    required: true,
+                    email: true
+                },
+                valid: false,
+                touched: false,
+                validationMessage:''
+            },
+            
             password: {
                 element: 'input',
                 value: '',
@@ -99,6 +116,13 @@ class Register extends Component {
                                         change={(element) => this.updateForm(element)}
                                     />
                                     </div>
+                                </div>
+                                <div>
+                                    <FormField 
+                                        id={'email'}
+                                        formdata={this.state.formdata.email}
+                                        change={(element) => this.updateForm(element)}
+                                    />
                                 </div>
                             </form>
                         </div>
