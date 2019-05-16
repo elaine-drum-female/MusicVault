@@ -10,9 +10,6 @@ const Footer = () => {
     return (
         <footer className="bck_b_dark">
             <div className="container">
-                <div className="logo">
-                    Waves
-                </div>
                 <div className="wrapper">
                     <div className="left">
                         <h2>Contact information</h2>
