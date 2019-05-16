@@ -18,6 +18,37 @@ require('dotenv').config();
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.DATABASE);
 
+// Models
+const { User } = require('./models/user');
+
+
+//==================================
+//           USERS
+//==================================
+
+app.post('/api/users/register', (req, res) => {
+    res.send(200);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const port = process.env.PORT || 3005;
 
 app.listen(port , () => {
