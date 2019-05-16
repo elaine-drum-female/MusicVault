@@ -1,3 +1,5 @@
+
+
 export const validate = (element, formdata= []) => {
     let error = [true,''];
 
@@ -5,6 +7,12 @@ export const validate = (element, formdata= []) => {
     if(element.validation.email){
         const valid = /\S+@\S+\.\S+/.test(element.value)
         const message = `${!valid ? 'Must be a valid email':''}`;
+        error = !valid ? [valid,message] : error;
+    }
+
+    if(element.validation.confirm) {
+        const valid = element.value.trim() === formdata[element.validation.confirm].value;
+        const message = `${!valid ? 'Passwords does not match':''}`;
         error = !valid ? [valid,message] : error;
     }
 
