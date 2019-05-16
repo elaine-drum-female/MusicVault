@@ -57,7 +57,7 @@ class Register extends Component {
                 touched: false,
                 validationMessage:''
             },
-            
+
             password: {
                 element: 'input',
                 value: '',
@@ -124,6 +124,8 @@ class Register extends Component {
                                         change={(element) => this.updateForm(element)}
                                     />
                                 </div>
+                                <h2>Verify Password</h2>
+                                <div className="form_block_two"></div>
                             </form>
                         </div>
                     </div>
