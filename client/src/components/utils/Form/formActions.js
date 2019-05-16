@@ -30,7 +30,7 @@ export const update = (element, formdata, formName ) => {
     if(element.blur) {
         let validData = validate(newElement, formdata);
         newElement.valid = validData[0];
-        newElement.validationMessage = validData[0];
+        newElement.validationMessage = validData[1];
     }
 
     newElement.touched = element.blur;
