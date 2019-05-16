@@ -47,17 +47,22 @@ const userSchema = mongoose.Schema({
 userSchema.pre('save', function(next) {
     // Referencing this user and not the function
     var user = this;
-    bcrypt.genSalt(SALT_I, function(err, salt) {
-        // kills process of whatever is being run (i.e. posting req) before moving forward
-        if(err) return next (err);
 
-        // Use password of user to hash out password
-        bcrypt.hash(user.password, salt, function(err, hash){
-            if(err) return next(err);
-            user.password = hash;
-            next();
+    if(user.isModified('password')) {
+        bcrypt.genSalt(SALT_I, function(err, salt) {
+            // kills process of whatever is being run (i.e. posting req) before moving forward
+            if(err) return next (err);
+    
+            // Use password of user to hash out password
+            bcrypt.hash(user.password, salt, function(err, hash){
+                if(err) return next(err);
+                user.password = hash;
+                next();
+            });
         });
-    });
+    } else {
+        next();
+    }
 });
 
 const User = mongoose.model('User', userSchema);
