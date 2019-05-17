@@ -1,10 +1,13 @@
 import React from 'react';
+import UserLayout from '../../hoc/userlayout';
 
 const UserDashboard = () => {
     return (
-        <div>
-            dashboard
-        </div>
+        <UserLayout>
+            <div>
+                dashboard
+            </div>
+        </UserLayout>
     );
 };
 
