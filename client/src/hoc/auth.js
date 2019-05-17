@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-//import { Authorize } from '../actions/user_actions';
+import { authorizedUser } from '../actions/user_actions';
 import CircularProcess from '@material-ui/core/CircularProgress';
 
 export default function(ComposedClass, reload, adminRoute = null) {
@@ -8,6 +8,14 @@ export default function(ComposedClass, reload, adminRoute = null) {
 
         state = {
             loading: true
+        }
+
+        componentDidMount() {
+            // Dispatch already injected props from mapStateToProps
+            this.props.dispatch(authorizedUser()).then(response => {
+                let user = this.props.user.userData;
+                console.log(user);
+            });
         }
 
         render() {
@@ -22,7 +30,7 @@ export default function(ComposedClass, reload, adminRoute = null) {
             }
             return (
                 <div>
-                   <ComposedClass />
+                   <ComposedClass {...this.props} user={this.props.user} />
                 </div>
             );
         }
