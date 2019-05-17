@@ -1,6 +1,6 @@
 import React from 'react';
 import UserLayout from '../../hoc/userlayout';
-// import LinkButton from '../utils/button';
+import LinkButton from '../utils/button';
 
 const UserDashboard = () => {
     return (
@@ -13,7 +13,11 @@ const UserDashboard = () => {
                         <span>lastname</span>
                         <span>email</span>
                     </div>
-                    
+                    <LinkButton 
+                        type="default"
+                        title="Edit account info"
+                        linkTo="/user/user_profile"
+                    />
                 </div>
             </div>
         </UserLayout>
