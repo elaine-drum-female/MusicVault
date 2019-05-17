@@ -15,6 +15,18 @@ export default function(ComposedClass, reload, adminRoute = null) {
             this.props.dispatch(authorizedUser()).then(response => {
                 let user = this.props.user.userData;
                 console.log(user);
+                
+                //If user is NOT authorized send them back to the register page
+                if(!user.isAuth) {
+                    if(reload) {
+                        this.props.history.push('/register_login')
+                    }
+                } else {
+                    if(reload === false) {
+                        this.props.history.push('/user/dashboard')
+                    } 
+                }
+                this.setState({loading:false})
             });
         }
 
