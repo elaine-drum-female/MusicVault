@@ -25,7 +25,7 @@ export function loginUser(dataToSubmit){
 }
 
 export function authorizedUser() {
-    const request = axios.get(`${USER_SERVER}/authorize`)
+    const request = axios.get(`${USER_SERVER}/auth`)
     .then(response => response.data);
 
     return {
