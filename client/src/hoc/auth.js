@@ -22,10 +22,15 @@ export default function(ComposedClass, reload, adminRoute = null) {
                         this.props.history.push('/register_login')
                     }
                 } else {
+                    //If it is an Admin route and user is NOT an Admin, keep them on Dashboard page
+                    if(adminRoute && !user.isAdmin) {
+                        this.props.history.push('/user/dashboard')
+                } else  {
                     if(reload === false) {
                         this.props.history.push('/user/dashboard')
                     } 
                 }
+            }
                 this.setState({loading:false})
             });
         }
