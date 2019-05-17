@@ -159,7 +159,7 @@ class Register extends Component {
                                     </div>
                                     <div className="block">
                                     <FormField 
-                                        id={'confirmpassword'}
+                                        id={'confirmPassword'}
                                         formdata={this.state.formdata.confirmPassword}
                                         change={(element) => this.updateForm(element)}
                                     />
