@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+// import { Link } from 'react-router-dom';
+
+import { connect } from 'react-redux';
 
 class Header extends Component {
 
@@ -42,6 +45,28 @@ class Header extends Component {
         ]
     }
 
+    showLinks = (type) => {
+        let list = [];
+
+        if(this.props.user.userData) {
+            type.forEach((item)=> {
+                //If user is NOT authenticated
+                if(!this.props.user.userData.isAuth) {
+                    //And check if the list says public and matches true ONLY
+                    if(item.public === true) {
+                        //Push only the items that list TRUE
+                        list.push(item)
+                       }
+                    } else {
+                        //If user is NOT logged in, do NOT show the log in because he/she is logged in already
+                        if(item.name !== "Log In") {
+                            list.push(item)
+                        }
+                    }
+            });
+        }
+
+    }
 
 
     render() {
@@ -55,10 +80,10 @@ class Header extends Component {
                     </div>
                     <div className="right">
                         <div className="top">
-                            LINKS
+                        {this.state.showLinks(this.state.userlinks)}
                         </div>
                         <div className="bottom">
-                            LINKS
+                            {this.state.showLinks(this.state.publiclinks)}
                         </div>
                     </div>
                 </div>
@@ -67,4 +92,10 @@ class Header extends Component {
     }
 }
 
-export default Header;
+// function mapStateToProps(state) {
+//     return {
+//         user: state.user
+//     }
+// }
+
+export default connect()(Header);
