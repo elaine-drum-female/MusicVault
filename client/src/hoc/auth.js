@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { authorizedUser } from '../actions/user_actions';
-import CircularProcess from '@material-ui/core/CircularProgress';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 export default function(ComposedClass, reload, adminRoute = null) {
     class AuthCheck extends Component {
@@ -22,7 +22,7 @@ export default function(ComposedClass, reload, adminRoute = null) {
             if(this.state.loading) {
                 return (
                     <div className="main_loader">
-                        <CircularProcess style={{
+                        <CircularProgress style={{
                             color:'#ccc'
                         }} thickness={7}/>
                     </div>
