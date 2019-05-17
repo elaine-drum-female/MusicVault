@@ -45,6 +45,7 @@ class Header extends Component {
         ]
     }
 
+
     showLinks = (type) => {
         let list = [];
 
@@ -65,6 +66,12 @@ class Header extends Component {
                     }
             });
         }
+
+        // Loop over this list and return an item and iteration
+        return list.map((item, i) => {
+            //defaultLink is a link from react-router , two prop and text
+            return this.defaultLink(item, i)
+        });
 
     }
 
