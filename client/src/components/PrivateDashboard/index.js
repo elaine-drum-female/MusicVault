@@ -19,6 +19,13 @@ const UserDashboard = () => {
                         linkTo="/user/user_profile"
                     />
                 </div>
+                <div className="user_nfo_panel">
+                    <h1>History Purchases</h1>
+                    <div className="user_product_block_wrapper">
+                        history
+                    </div>
+                </div>
+
             </div>
         </UserLayout>
     );
