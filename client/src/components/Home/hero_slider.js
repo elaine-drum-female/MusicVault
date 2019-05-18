@@ -1,4 +1,6 @@
 import React from 'react';
+import Slider from 'react-slick';
+// import LinkButton from '../utils/button';
 
 const HeroSlider = (props) => {
 
@@ -33,15 +35,43 @@ const HeroSlider = (props) => {
             lineTwo:'Need a mic for tonight?',
             linkTitle:'See the selection',
             linkTo:'/shop'
-        },
-
-        
-
-
+        }
+    
     ]
 
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow:1,
+        slidesToScroll:1,
+        arrow:true
+    }
+
+    const generateSlides = () => (
+        slides ?
+        slides.map((item, i) => (
+            <div key={i}>
+                <div className="featured_image"
+                    style={{
+                        background:`url(${item.img})`,
+                        height:`${window.innerHeight}px`
+                    }}
+                >
+                    <div className="featured_action">
+
+                    </div>
+                </div>
+            </div>
+        ))
+        :null
+    )
+
     return (
-        <div>
+        <div className="featured_container">
+            <Slider {...settings}>
+                { generateSlides() }
+            </Slider>
             
         </div>
     );
