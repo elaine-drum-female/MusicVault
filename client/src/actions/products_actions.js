@@ -1,5 +1,11 @@
 import axios from 'axios';
-import { PRODUCTS_BY_SELL, PRODUCTS_BY_ARRIVAL } from './types';
+import { 
+    PRODUCTS_BY_SELL, 
+    PRODUCTS_BY_ARRIVAL,
+    FETCH_BRANDS,
+    FETCH_WOODS
+
+ } from './types';
 import { PRODUCT_SERVER } from '../components/utils/misc';
 
 
@@ -22,3 +28,15 @@ export function ProductsByArrival() {
         payload: request
     }
 }
+
+//======================================
+//             CATEGORIES
+//======================================
+
+export function getBrands() {
+    
+} 
+
+export function getWoods() {
+
+} 
