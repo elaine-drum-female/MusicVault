@@ -16,7 +16,8 @@ const HeroPromo = (props) => {
         promotion ?
         <div className="home_promotion_img"
             style={{
-                background: `url(${promotion.img})`
+                background: `url(${promotion.img})`,
+                position:'relative'
             }}
         >
             
@@ -24,11 +25,12 @@ const HeroPromo = (props) => {
             <div className="tag low_title">{promotion.lineTwo}</div>
             <div>
                 <LinkButton
-                    type="default"
+                    type="promo"
                     title={promotion.linkTitle}
                     linkTo={promotion.linkTo}
                     addStyles={{
-                        margin:'10px 0 0 0'
+                        margin:'40px 0 0 0',
+                        padding:'30px'
                     }}
                 />
             </div>
