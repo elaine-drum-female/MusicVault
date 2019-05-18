@@ -23,10 +23,14 @@ class Home extends Component {
         return (
             <div>
                 <HeroSlider/>
-                <HeroPromo/>
                 <CardBlock
                     list={this.props.products.bySell}
                     title="Best Selling guitars"
+                />
+                <HeroPromo/>
+                <CardBlock
+                    list={this.props.products.byArrival}
+                    title="New Arrivals"
                 />
             </div>
         );
