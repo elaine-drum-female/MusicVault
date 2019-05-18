@@ -1,13 +1,15 @@
 import React from 'react';
+import Card from './card';
 
 const CardBlock = (props) => {
 
     const renderCards = () => (
         props.list ?
             props.list.map((card, i) => (
-                <div>
-                    'CARD'
-                </div>
+                <Card 
+                    key={i}
+                    {...card}
+                /> 
             ))
         :null
     )
