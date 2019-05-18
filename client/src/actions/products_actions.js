@@ -4,7 +4,7 @@ import { PRODUCT_SERVER } from '../components/utils/misc';
 
 
 export function ProductsBySell() {
-    const request = axios.get(`$(PRODUCT_SERVER)/articles?sortBy=createdAt&order=desc&limit=4`)
+    const request = axios.get(`$(PRODUCT_SERVER)/articles?sortBy=sold&order=desc&limit=4`)
     .then(response => response.data);
 
     return {
@@ -14,5 +14,11 @@ export function ProductsBySell() {
 }
 
 export function ProductsByArrival() {
+    const request = axios.get(`$(PRODUCT_SERVER)/articles?sortBy=createdAt&order=desc&limit=4`)
+    .then(response => response.data);
 
+    return {
+        type: PRODUCTS_BY_ARRIVAL,
+        payload: request
+    }
 }
