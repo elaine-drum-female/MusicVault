@@ -5,3 +5,5 @@ export const LOGOUT_USER = 'logout_user';
 
 export const PRODUCTS_BY_SELL = 'products_by_sell';
 export const PRODUCTS_BY_ARRIVAL = 'products_by_arrival';
+export const FETCH_BRANDS = 'fetch_brands';
+export const FETCH_WOODS = 'fetch_woods';
