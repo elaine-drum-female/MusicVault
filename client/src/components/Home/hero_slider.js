@@ -1,6 +1,6 @@
 import React from 'react';
 import Slider from 'react-slick';
-// import LinkButton from '../utils/button';
+import LinkButton from '../utils/button';
 
 const HeroSlider = (props) => {
 
@@ -40,12 +40,12 @@ const HeroSlider = (props) => {
     ]
 
     const settings = {
-        dots: true,
+        dots: false,
         infinite: true,
-        speed: 500,
+        speed: 3000,
         slidesToShow:1,
         slidesToScroll:1,
-        arrow:true
+        arrows:false
     }
 
     const generateSlides = () => (
@@ -59,7 +59,18 @@ const HeroSlider = (props) => {
                     }}
                 >
                     <div className="featured_action">
-
+                        <div className="tag title">{item.lineOne}</div>
+                        <div className="tag low_title">{item.lineTwo}</div>
+                    </div>
+                    <div>
+                        <LinkButton
+                            type="default"
+                            title={item.linkTitle}
+                            linkTo={item.linkTo}
+                            addStyles={{
+                                margin:'10px 0 0 0'
+                            }}
+                         />
                     </div>
                 </div>
             </div>
