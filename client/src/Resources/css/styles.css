@@ -190,6 +190,23 @@ select {
     margin-top: 179px;
 }
 
+.promo_default {
+    top: 75px;
+    display: table;
+    position: absolute;
+    left: 570px;
+    /* right: 50%; */
+    background: #e1ddc3;
+    text-transform: uppercase;
+    padding: 10px;
+    width: 100px;
+    margin: 0 auto;
+    text-align: center;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+}
+
 .card_link,
 .bag_link,
 .add_to_cart_link {
