@@ -13,6 +13,7 @@ class Home extends Component {
 
     componentDidMount() {
         this.props.dispatch(ProductsBySell());
+        this.props.dispatch(ProductsByArrival());
     }
 
     
