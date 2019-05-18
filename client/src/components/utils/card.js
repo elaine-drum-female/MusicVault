@@ -22,8 +22,20 @@ class Card extends Component {
                     no-repeat`
                 }}
               >
-
               </div>
+              <div className="action_container">
+                  <div className="tags">
+                      <div className="brand">{props.brand.name}</div>
+                      <div className="name">{props.name}</div>
+                      <div className="price">${props.price}</div>
+                  </div>
+              </div>
+              { props.grid ?
+                <div className="description">
+                    blah blah
+                </div>
+                :null
+              }
             </div>
         );
     }
