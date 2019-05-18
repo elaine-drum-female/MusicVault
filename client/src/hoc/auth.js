@@ -55,7 +55,7 @@ export default function(ComposedClass, reload, adminRoute = null) {
 
     function mapStateToProps(state) {
         return {
-            user : state.user
+            user: state.user
         }
     }
 
