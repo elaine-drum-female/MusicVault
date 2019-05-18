@@ -33,10 +33,21 @@ export function ProductsByArrival() {
 //             CATEGORIES
 //======================================
 
-export function getBrands() {
-    
-} 
+export function fetchBrands() {
+    const request = axios.get(`${PRODUCT_SERVER}/getbrands`)
+    .then(response => response.data);
+    return {
+        type: FETCH_BRANDS,
+        payload: request
+    }
+}
 
-export function getWoods() {
 
+export function fetchWoods() {
+    const request = axios.get(`${PRODUCT_SERVER}/woods`)
+    .then(response => response.data);
+    return {
+        type: FETCH_WOODS,
+        payload: request
+    }
 } 
