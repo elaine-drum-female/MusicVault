@@ -6,6 +6,10 @@ import { fetchBrands, fetchWoods } from '../../actions/products_actions';
 
 class Shop extends Component {
 
+    componentDidMount() {
+        this.props.dispatch(fetchBrands());
+        this.props.dispatch(fetchWoods());
+    }
 
     render() {
         const products = this.props.products;
@@ -36,4 +40,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect()(Shop);
+export default connect(mapStateToProps)(Shop);
