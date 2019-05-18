@@ -16,6 +16,15 @@ const LinkButton = (props) => {
                     {props.title}
                 </Link>
             break;
+            case "promo":
+                template = <Link
+                    className="promo_default"
+                    to={props.linkTo}
+                    {...props.addStyles}
+                >
+                    {props.title}
+                </Link>
+            break;
             default:
                 template='';
         }
