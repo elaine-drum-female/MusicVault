@@ -187,7 +187,7 @@ select {
     padding: 10px;
     display: table;
     background: #e1ddc3;
-    margin-top: 10px;
+    margin-top: 179px;
 }
 
 .card_link,
@@ -368,7 +368,7 @@ footer .business_nfo .nfo {
     background-position: center left !important;
 }
 
-.featured_container .featured_action {
+.featured_container .featured_action, .my_link {
     position: absolute;
     top: 45%;
     left: 8%;
