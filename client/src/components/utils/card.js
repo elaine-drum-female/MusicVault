@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import MyButton from '../utils/button';
 
 class Card extends Component {
 
@@ -16,26 +17,40 @@ class Card extends Component {
 
         return (
             <div className={`card_item_wrapper ${props.grid}`}>
-              <div className="image"
-                style={{
-                    background:`url(${this.renderCardimage(props.images)})
-                    no-repeat`
-                }}
-              >
-              </div>
-              <div className="action_container">
-                  <div className="tags">
-                      <div className="brand">{props.brand.name}</div>
-                      <div className="name">{props.name}</div>
-                      <div className="price">${props.price}</div>
-                  </div>
-              </div>
-              { props.grid ?
-                <div className="description">
-                    blah blah
+                <div className="image"
+                    style={{
+                        background:`url(${this.renderCardimage(props.images)})
+                        no-repeat`
+                    }}
+                >
                 </div>
-                :null
-              }
+                <div className="action_container">
+                    <div className="tags">
+                        <div className="brand">{props.brand.name}</div>
+                        <div className="name">{props.name}</div>
+                        <div className="price">${props.price}</div>
+                    </div>
+                </div>
+                { props.grid ?
+                    <div className="description">
+                        blah blah
+                    </div>
+                    :null
+                }
+
+                <div className="actions">
+                    <div className="button_wrapp">
+                        <MyButton 
+                            type="default"
+                            altClass="card_link"
+                            title="View product"
+                            linkTo={`/product_detail/${props.id}`}
+                            addStyles={{
+                                margin:'10px 0 0 0'
+                            }}
+                        />
+                    </div>
+                </div>
             </div>
         );
     }
