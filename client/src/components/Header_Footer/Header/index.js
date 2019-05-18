@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 
@@ -45,6 +45,11 @@ class Header extends Component {
         ]
     }
 
+    defaultLink = (item, i) => (
+        <Link to={item.linkTo}  key={i}>
+            {item.name}
+        </Link>
+    )
 
     showLinks = (type) => {
         let list = [];
@@ -87,10 +92,10 @@ class Header extends Component {
                     </div>
                     <div className="right">
                         <div className="top">
-                        {this.state.showLinks(this.state.userlinks)}
+                        {this.showLinks(this.state.userlinks)}
                         </div>
                         <div className="bottom">
-                            {this.state.showLinks(this.state.publiclinks)}
+                            {this.showLinks(this.state.publiclinks)}
                         </div>
                     </div>
                 </div>
@@ -99,10 +104,10 @@ class Header extends Component {
     }
 }
 
-// function mapStateToProps(state) {
-//     return {
-//         user: state.user
-//     }
-// }
+function mapStateToProps(state) {
+    return {
+        user: state.user
+    }
+}
 
-export default connect()(Header);
+export default connect(mapStateToProps)(Header);
