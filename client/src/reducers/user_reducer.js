@@ -1,4 +1,4 @@
-import { LOGIN_USER, REGISTER_USER, AUTH_USER } from '../actions/types';
+import { LOGIN_USER, REGISTER_USER, AUTH_USER, LOGOUT_USER } from '../actions/types';
 
 //Return the state
 export default function( state= {} , action) {
@@ -8,6 +8,8 @@ export default function( state= {} , action) {
         case LOGIN_USER:
             return {...state, loginSuccess: action.payload}
         case AUTH_USER:
+            return {...state, userData: action.payload}
+        case LOGOUT_USER:
             return {...state, userData: action.payload}
         default:
             return state;
