@@ -50,6 +50,15 @@ class Card extends Component {
                             }}
                         />
                     </div>
+
+                    <div className="button_wrapp">
+                    <MyButton 
+                            type="bag_link"
+                            runAction={() => {
+                                console.log("Added to Cart");
+                            }}
+                        />
+                    </div>
                 </div>
             </div>
         );
