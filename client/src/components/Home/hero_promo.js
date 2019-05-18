@@ -14,25 +14,25 @@ const HeroPromo = (props) => {
 
     const displayPromo = () => (
         promotion ?
-        <div className="home_promotion_img">
+        <div className="home_promotion_img"
             style={{
                 background: `url(${promotion.img})`
             }}
-
-            <div className="featured_action">
-                <div className="tag title">{promotion.lineOne}</div>
-                <div className="tag low_title">{promotion.lineTwo}</div>
-                <div>
-                    <LinkButton
-                        type="default"
-                        title={promotion.linkTitle}
-                        linkTo={promotion.linkTo}
-                        addStyles={{
-                            margin:'10px 0 0 0'
-                        }}
-                    />
-                </div>
+        >
+            
+            <div className="tag title">{promotion.lineOne}</div>
+            <div className="tag low_title">{promotion.lineTwo}</div>
+            <div>
+                <LinkButton
+                    type="default"
+                    title={promotion.linkTitle}
+                    linkTo={promotion.linkTo}
+                    addStyles={{
+                        margin:'10px 0 0 0'
+                    }}
+                />
             </div>
+        
         </div>
         : null 
     )
