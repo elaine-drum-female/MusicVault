@@ -45,6 +45,19 @@ class Header extends Component {
         ]
     }
 
+    cartLink = (item, i) => {
+        const user = this.props.user.userData;
+
+        return (
+            <div className="cart_link" key={i}>
+                <span>{user.cart ? user.cart.length:0}</span>
+                <Link to={item.linkTo}>
+                    {item.name}
+                </Link>
+            </div>
+        )
+    }
+
     defaultLink = (item, i) => (
         <Link to={item.linkTo}  key={i}>
             {item.name}
@@ -74,8 +87,13 @@ class Header extends Component {
 
         // Loop over this list and return an item and iteration
         return list.map((item, i) => {
-            //defaultLink is a link from react-router , two prop and text
-            return this.defaultLink(item, i)
+            // If the user is NOT logged in remove My Cart and return to default link
+            if(item.name !== "My Cart") {
+                //defaultLink is a link from react-router , two prop and text
+                return this.defaultLink(item, i)
+            } else {
+                return this.cartLink(item, i)
+            }
         });
 
     }
