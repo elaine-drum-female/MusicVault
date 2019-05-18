@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import HeroSlider from './hero_slider';
 import HeroPromo from './hero_promo';
+import CardBlock from '../utils/card_block';
 // import API from "../utils/API";
 
 import { connect } from 'react-redux';
@@ -23,6 +24,10 @@ class Home extends Component {
             <div>
                 <HeroSlider/>
                 <HeroPromo/>
+                <CardBlock
+                    list={this.props.products.bySell}
+                    title="Best Selling guitars"
+                />
             </div>
         );
     }
