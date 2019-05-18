@@ -9,7 +9,7 @@ const LinkButton = (props) => {
         switch(props.type){
             case "default":
                 template = <Link
-                    className="link_default"
+                    className={!props.altClass ? 'link_default' : props.altClass }     
                     to={props.linkTo}
                     {...props.addStyles}
                 >
@@ -36,6 +36,8 @@ const LinkButton = (props) => {
         <div className="my_link">
              {buttons()}   
         </div>
+
+        
     );
 };
 
