@@ -27,6 +27,23 @@ class RadiobuttonCollapse extends Component {
         }
     }
 
+    handleClick = () => {
+        this.setState({open: !this.state.open})
+    }
+
+    handleAngle = () => (
+        this.state.open ?
+            <FontAwesomeIcon
+                icon={faAngleUp}
+                className="icon"
+            />
+        : 
+            <FontAwesomeIcon
+                icon={faAngleDown}
+                className="icon"
+            />
+    )
+
 
     render() {
         return (
