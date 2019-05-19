@@ -42,6 +42,12 @@ class Shop extends Component {
                                 list={frets}
                                 handleFilters={(filters) => this.handleFilters(filters, 'frets')}
                             />
+                            <CheckboxCollapse
+                                initState={true}
+                                title="Wood"
+                                list={products.woods}
+                                handleFilters={(filters) => this.handleFilters(filters, 'wood')}
+                            />
                         </div>
                         <div className="right">
                             right
