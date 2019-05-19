@@ -32,6 +32,13 @@ const { admin } = require('./middleware/admin');
 //             PRODUCTS
 //=================================
 
+app.post('api/product/shop', (req, res) => {
+    let order = req.body.order ? req.body.order : 'desc';
+    let sortBy = req.body.sortBy ? req.body.sortBy : '_id';
+    let limit = req.body.limit ? parseInt(req.query.limit) : 20;
+    let skip = parseInt(req.body.skip);
+})
+
 // BY ARRIVAL
 // /articles?sortBy=createdAt&order=desc&limit=4
 
