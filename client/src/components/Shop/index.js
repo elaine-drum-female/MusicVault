@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PageTop from '../utils/page_top';
 
+import { frets } from '../utils/Form/fixed_categories';
+
 import { connect } from 'react-redux';
 import { fetchBrands, fetchWoods } from '../../actions/products_actions';
 
@@ -14,8 +16,7 @@ class Shop extends Component {
     }
 
     handleFilters = (filters,category) => {
-        const newFilters = {...this.state.filters}
-        newFilters[category] = filters;
+       console.log(filters);
     }
 
     render() {
@@ -34,6 +35,12 @@ class Shop extends Component {
                                 title="Brands"
                                 list={products.brands}
                                 handleFilters={(filters) => this.handleFilters(filters, 'brand')}
+                            />
+                            <CheckboxCollapse
+                                initState={false}
+                                title="Frets"
+                                list={frets}
+                                handleFilters={(filters) => this.handleFilters(filters, 'frets')}
                             />
                         </div>
                         <div className="right">
