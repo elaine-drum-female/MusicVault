@@ -33,6 +33,11 @@ class Shop extends Component {
       const newFilters = {...this.state.filters}
       newFilters[category] = filters;
 
+      if(category === "price"){
+        let priceValues = this.handlePrice(filters);
+        newFilters[category] = priceValues
+    }
+
       this.setState({
           filters: newFilters
       })
