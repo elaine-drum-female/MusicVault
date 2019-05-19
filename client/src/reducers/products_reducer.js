@@ -19,7 +19,11 @@ export default function( state= {} , action) {
         case FETCH_WOODS:
             return {...state, woods: action.payload}
         case FETCH_PRODUCTS_TO_SHOP:
-            return {...state}
+            return {
+                ...state, 
+                toShop: action.payload.articles,
+                toShopSize: action.payload.size
+            }
         default:
             return state;
     }
