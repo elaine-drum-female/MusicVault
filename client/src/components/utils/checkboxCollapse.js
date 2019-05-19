@@ -71,8 +71,12 @@ class CheckboxCollapse extends Component {
             newChecked.splice(currentIndex, 1)
         }
 
+            
+
             this.setState({
                 checked: newChecked
+            },()=>{
+                this.props.handleFilters(newChecked)
             })
     }
 
