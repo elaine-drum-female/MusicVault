@@ -29,6 +29,52 @@ class CheckboxCollapse extends Component {
         this.setState({open: !this.state.open})
     }
     
+    handleAngle = () => (
+        this.state.open ?
+            <FontAwesomeIcon
+                icon={faAngleUp}
+                className="icon"
+            />
+        : 
+            <FontAwesomeIcon
+                icon={faAngleDown}
+                className="icon"
+            />
+    )
+
+    renderList = () => (
+        this.props.list ?
+            this.props.list.map((value)=>(
+                <ListItem key={value._id} style={{padding:'10px 0'}}>
+                    {/* Primary will be whatever name given from the server */}
+                    <ListItemText primary={value.name}/>
+                    <ListItemSecondaryAction>
+                        <Checkbox
+                            color="primary"
+                            onChange={this.handleToggle(value._id)}
+                            checked={this.state.checked.indexOf(value._id) !== -1}
+                        />
+                    </ListItemSecondaryAction>
+                </ListItem>
+            ))
+        :null
+    )
+    
+    handleToggle = value => () => {
+        const { checked } = this.state;
+        const currentIndex = checked.indexOf(value);
+        const newChecked = [...checked];
+
+        if (currentIndex === -1) {
+            newChecked.push(value);
+        } else {
+            newChecked.splice(currentIndex, 1)
+        }
+
+            this.setState({
+                checked: newChecked
+            })
+    }
 
     render() {
         return (
