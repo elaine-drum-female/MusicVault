@@ -12,7 +12,7 @@ class Shop extends Component {
     }
 
     render() {
-        const products = this.props.products;
+        // const products = this.props.products;
 
         return (
             <div>
