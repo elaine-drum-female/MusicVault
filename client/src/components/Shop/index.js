@@ -10,16 +10,34 @@ import CheckboxCollapse from '../utils/checkboxCollapse';
 
 class Shop extends Component {
 
+    state = {
+        grid:'',
+        limit:6,
+        skip:0,
+        filters: {
+            brand: [],
+            frets: [],
+            wood: [],
+            price: []
+        }
+    }
+
     componentDidMount() {
         this.props.dispatch(fetchBrands());
         this.props.dispatch(fetchWoods());
     }
 
     handleFilters = (filters,category) => {
-       console.log(filters);
+      const newFilters = {...this.state.filters}
+      newFilters[category] = filters;
+
+      this.setState({
+          filters: newFilters
+      })
     }
 
     render() {
+        console.log(this.state.filters);
         const products = this.props.products;
 
         return (
