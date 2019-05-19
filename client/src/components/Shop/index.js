@@ -5,7 +5,7 @@ import { frets , price } from '../utils/Form/fixed_categories';
 
 
 import { connect } from 'react-redux';
-import { fetchBrands, fetchWoods } from '../../actions/products_actions';
+import { fetchProductsToShop, fetchBrands, fetchWoods } from '../../actions/products_actions';
 
 import CheckboxCollapse from '../utils/checkboxCollapse';
 import RadiobuttonCollapse from '../utils/radiobuttonCollapse';
@@ -27,7 +27,13 @@ class Shop extends Component {
     componentDidMount() {
         this.props.dispatch(fetchBrands());
         this.props.dispatch(fetchWoods());
-    }
+        
+        this.props.dispatch(fetchProductsToShop(
+            this.state.skip,
+            this.state.limit,
+            this.state.filters
+          ))
+        }
 
     handlePrice = (value) => {
         const data = price;
@@ -54,6 +60,7 @@ class Shop extends Component {
           filters: newFilters
       })
     }
+
 
     render() {
         console.log(this.state.filters);
