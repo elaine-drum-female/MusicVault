@@ -124,7 +124,7 @@ class Shop extends Component {
                                     grid={this.state.grid}
                                     limit={this.state.limit}
                                     size={products.toShopSize}
-                                    product={products.toShop}
+                                    products={products.toShop}
                                     loadMore={() => console.log("load more")}
                                 />
                             </div>
