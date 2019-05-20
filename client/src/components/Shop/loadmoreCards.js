@@ -7,7 +7,7 @@ const LoadmoreCards = (props) => {
             <div>
                 <CardBlockShop 
                     grid={props.grid}
-                    list={props.list}
+                    list={props.products}
                 />
             </div>
         </div>
