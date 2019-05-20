@@ -31,7 +31,7 @@ export function ProductsByArrival() {
 }
 
 export function fetchProductsToShop(skip, limit, filters = [], 
-    previouState = []){
+    previousState = []){
         const data = {
             limit,
             skip,
