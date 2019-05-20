@@ -37,6 +37,37 @@ app.post('api/product/shop', (req, res) => {
     let sortBy = req.body.sortBy ? req.body.sortBy : '_id';
     let limit = req.body.limit ? parseInt(req.query.limit) : 20;
     let skip = parseInt(req.body.skip);
+    // Mongo will accept arguments to do the filtering with
+    // objs and keys inside
+    let findArgs = {};
+
+    // Check if the client request has values to filter
+    for(let key in req.body.filters) {
+        if(req.body.filters[key].length > 0) {
+            if(key === 'price') {
+                findArgs[key] = {
+                    $gte: req.body.filters[key][0],
+                    $lte: req.body.filters[key][1]
+                }
+            } else {
+                findArgs[key] = req.body.filters[key]
+            }
+        } else {
+
+        }
+    }
+        Product.
+        find(findArgs).
+        populate('brand').
+        populate('wood').
+        sort([[sortBy, order]]).
+        skip(skip).
+        limit(limit).
+        exec(() => {
+            
+        })
+       
+
 })
 
 // BY ARRIVAL
