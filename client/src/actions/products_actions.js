@@ -4,7 +4,8 @@ import {
     PRODUCTS_BY_ARRIVAL,
     FETCH_BRANDS,
     FETCH_WOODS,
-    FETCH_PRODUCTS_TO_SHOP
+    FETCH_PRODUCTS_TO_SHOP,
+    ADD_PRODUCT
 
  } from './types';
 import { PRODUCT_SERVER } from '../components/utils/misc';
@@ -51,6 +52,17 @@ export function fetchProductsToShop(skip, limit, filters = [],
         payload: request
     }
 
+}
+
+export function addProduct(datatoSubmit){
+
+    const request = axios.post(`${PRODUCT_SERVER}/article`,datatoSubmit)
+                    .then(response => response.data);
+
+    return {
+        type: ADD_PRODUCT,
+        payload: request
+    }
 }
 
 //======================================
