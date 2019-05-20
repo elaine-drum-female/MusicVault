@@ -10,6 +10,7 @@ import Register from './components/Register_login/register';
 import Shop from './components/Shop';
 
 import UserDashboard from './components/PrivateDashboard';
+import AddProduct from './components/PrivateDashboard/Admin/add_product';
 
 
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
     <Wrapper>
       <Switch>
         <Route exact path="/user/dashboard" component={Authorize(UserDashboard, true)} />
+        <Route exact path="/admin/add_product" component={Authorize(AddProduct, true)} />
 
         <Route exact path="/register" component={Authorize(Register, false)} />
         <Route exact path="/register_login" component={Authorize(RegisterLogin, false)} />
