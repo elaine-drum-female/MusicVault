@@ -32,10 +32,10 @@ const { admin } = require('./middleware/admin');
 //             PRODUCTS
 //=================================
 
-app.post('api/product/shop', (req, res) => {
+app.post('/api/product/shop', (req, res) => {
     let order = req.body.order ? req.body.order : 'desc';
     let sortBy = req.body.sortBy ? req.body.sortBy : '_id';
-    let limit = req.body.limit ? parseInt(req.query.limit) : 20;
+    let limit = req.body.limit ? parseInt(req.body.limit) : 20;
     let skip = parseInt(req.body.skip);
     // Mongo will accept arguments to do the filtering with
     // objs and keys inside
@@ -63,8 +63,12 @@ app.post('api/product/shop', (req, res) => {
         sort([[sortBy, order]]).
         skip(skip).
         limit(limit).
-        exec(() => {
-            
+        exec((err, articles) => {
+            if(err) return res.status(400).send(err);
+            res.status(200).json({
+                size: articles.length,
+                articles
+            })
         })
        
 
