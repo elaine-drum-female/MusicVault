@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import UserLayout from '../../../hoc/userlayout';
 
 import FormField from '../../utils/Form/formfield';
-// import { update, generateData, isFormValid } from '../../utils/Form/formActions';
+import { update, generateData, isFormValid, populateOptionFields } from '../../utils/Form/formActions';
 
 import { connect } from 'react-redux';
-// import { fetchBrands, fetchWoods } from '../../../actions/products_actions';
+import { fetchBrands, fetchWoods } from '../../../actions/products_actions';
 
 class AddProduct extends Component {
 
@@ -30,15 +30,14 @@ class AddProduct extends Component {
                 validationMessage:'',
                 showlabel: true
             },
-
             description: {
                 element: 'textarea',
                 value: '',
                 config:{
-                    label: 'Product Description',
+                    label: 'Product description',
                     name: 'description_input',
                     type: 'text',
-                    placeholder: 'Please enter your description'
+                    placeholder: 'Enter your description'
                 },
                 validation:{
                     required: true
@@ -46,17 +45,17 @@ class AddProduct extends Component {
                 valid: false,
                 touched: false,
                 validationMessage:'',
-                showLabel:true
+                showlabel: true
             },
 
             price: {
                 element: 'input',
                 value: '',
                 config:{
-                    label: 'Product Price',
+                    label: 'Product price',
                     name: 'price_input',
                     type: 'number',
-                    placeholder: 'Please enter your price'
+                    placeholder: 'Enter your price'
                 },
                 validation:{
                     required: true
@@ -64,10 +63,10 @@ class AddProduct extends Component {
                 valid: false,
                 touched: false,
                 validationMessage:'',
-                showLabel:true
-            }
-            ,
-            brand: {
+                showlabel: true
+            },
+
+           brand: {
                 element: 'select',
                 value: '',
                 config:{
@@ -81,7 +80,7 @@ class AddProduct extends Component {
                 valid: false,
                 touched: false,
                 validationMessage:'',
-                showLabel:true
+                showlabel: true
             },
 
             shipping: {
@@ -189,6 +188,16 @@ class AddProduct extends Component {
                 showlabel: false
             }
         }
+    }
+
+    componentDidMount(){
+        const formdata = this.state.formdata;
+
+        this.props.dispatch(fetchBrands()).then( response => {
+            const newFormData = populateOptionFields(formdata,this.props.products.brands,'brand');
+            this.updateFields(newFormData)
+        })
+
     }
 
     render() {
