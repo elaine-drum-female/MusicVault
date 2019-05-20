@@ -209,13 +209,13 @@ class AddProduct extends Component {
                                 change={(element) => this.updateForm(element)}
                             />
 
-<FormField
+                        <FormField
                             id={'price'}
                             formdata={this.state.formdata.price}
                             change={(element) => this.updateForm(element)}
                         />
 
-                        <div className="form_devider"></div>
+                        <div className="form_divider"></div>
 
                         <FormField
                             id={'brand'}
@@ -236,7 +236,40 @@ class AddProduct extends Component {
                         />
 
                         
+                        <FormField
+                            id={'wood'}
+                            formdata={this.state.formdata.wood}
+                            change={(element) => this.updateForm(element)}
+                        />
 
+                        <FormField
+                            id={'frets'}
+                            formdata={this.state.formdata.frets}
+                            change={(element) => this.updateForm(element)}
+                        />
+
+                        <div className="form_divider"></div>
+
+                        <FormField
+                            id={'publish'}
+                            formdata={this.state.formdata.publish}
+                            change={(element) => this.updateForm(element)}
+                        />
+
+                        {this.state.formSuccess ?
+                            <div className="form_success">
+                                Success
+                            </div>
+                        :null}
+
+                        {this.state.formError ?
+                            <div className="error_label">
+                                Please check your data
+                                        </div>
+                            : null}
+                        <button onClick={(event) => this.submitForm(event)}>
+                            Add product
+                        </button>
 
                     </form>
                 </div>
