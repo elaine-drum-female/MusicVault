@@ -2,17 +2,17 @@ import React, { Component } from 'react';
 import UserLayout from '../../../hoc/userlayout';
 
 import FormField from '../../utils/Form/formfield';
-import { update, generateData, isFormValid } from '../../utils/Form/formActions';
+// import { update, generateData, isFormValid } from '../../utils/Form/formActions';
 
 import { connect } from 'react-redux';
-import { fetchBrands, fetchWoods } from '../../../actions/products_actions';
+// import { fetchBrands, fetchWoods } from '../../../actions/products_actions';
 
 class AddProduct extends Component {
 
     state = {
         formError: false,
         formSuccess: false,
-        formData: {
+        formdata: {
             name: {
                 element: 'input',
                 value: '',
@@ -20,7 +20,7 @@ class AddProduct extends Component {
                     label: 'Product name',
                     name: 'name_input',
                     type: 'text',
-                    placeholder: 'Please enter your name'
+                    placeholder: 'Enter your name'
                 },
                 validation:{
                     required: true
@@ -28,7 +28,7 @@ class AddProduct extends Component {
                 valid: false,
                 touched: false,
                 validationMessage:'',
-                showLabel: true
+                showlabel: true
             },
 
             description: {
@@ -195,7 +195,50 @@ class AddProduct extends Component {
         return (
             <UserLayout>
                 <div>
-                    add product
+                    <h1>Add product</h1>
+                    <form onSubmit={(event)=> this.submitForm(event)}>
+                        <FormField
+                                id={'name'}
+                                formdata={this.state.formdata.name}
+                                change={(element) => this.updateForm(element)}
+                            />
+
+                        <FormField
+                                id={'description'}
+                                formdata={this.state.formdata.description}
+                                change={(element) => this.updateForm(element)}
+                            />
+
+<FormField
+                            id={'price'}
+                            formdata={this.state.formdata.price}
+                            change={(element) => this.updateForm(element)}
+                        />
+
+                        <div className="form_devider"></div>
+
+                        <FormField
+                            id={'brand'}
+                            formdata={this.state.formdata.brand}
+                            change={(element) => this.updateForm(element)}
+                        />
+
+                        <FormField
+                            id={'shipping'}
+                            formdata={this.state.formdata.shipping}
+                            change={(element) => this.updateForm(element)}
+                        />
+
+                         <FormField
+                            id={'available'}
+                            formdata={this.state.formdata.available}
+                            change={(element) => this.updateForm(element)}
+                        />
+
+                        
+
+
+                    </form>
                 </div>
             </UserLayout>
         );
