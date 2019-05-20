@@ -190,11 +190,22 @@ class AddProduct extends Component {
         }
     }
 
+    updateFields = (newFormdata) => {
+        this.setState({
+            formdata: newFormdata
+        })
+    }
+
     componentDidMount(){
         const formdata = this.state.formdata;
 
         this.props.dispatch(fetchBrands()).then( response => {
             const newFormData = populateOptionFields(formdata,this.props.products.brands,'brand');
+            this.updateFields(newFormData)
+        })
+
+        this.props.dispatch(fetchWoods()).then( response => {
+            const newFormData = populateOptionFields(formdata,this.props.products.woods,'wood');
             this.updateFields(newFormData)
         })
 
