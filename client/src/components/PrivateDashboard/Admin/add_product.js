@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import UserLayout from '../../../hoc/userlayout';
 
 import FormField from '../../utils/Form/formfield';
-import { update, generateData, isFormValid, populateOptionFields } from '../../utils/Form/formActions';
+import { update, generateData, isFormValid, populateOptionFields, resetFields } from '../../utils/Form/formActions';
 
 import { connect } from 'react-redux';
-import { fetchBrands, fetchWoods } from '../../../actions/products_actions';
+import { fetchBrands, fetchWoods, addProduct } from '../../../actions/products_actions';
 
 class AddProduct extends Component {
 
@@ -194,6 +194,47 @@ class AddProduct extends Component {
         this.setState({
             formdata: newFormdata
         })
+    }
+
+    updateForm = (element) => {
+        const newFormdata = update(element,this.state.formdata,'products');
+        this.setState({
+            formError: false,
+            formdata: newFormdata
+        });
+    }
+
+    resetFieldHandler = () => {
+        const newFormdata = resetFields(this.state.formdata,'products');
+        this.setState({
+            formdata: newFormdata,
+            formSuccess:true
+        });
+        setTimeout(()=>{
+            this.setState({
+                formSuccess: false
+            })
+        },3000)
+    }
+
+    submitForm = (event) => {
+        event.preventDefault();
+        
+        let dataToSubmit = generateData(this.state.formdata,'register');
+        let formIsValid = isFormValid(this.state.formdata,'register')
+
+        if(formIsValid) {
+            this.props.dispatch(addProduct(dataToSubmit)).then(()=>{
+                if( this.props.products.addProduct.success){
+                    this.resetFieldHandler();
+                }else{
+                    this.setState({formError: true})
+                }
+            })
+        } else {
+            this.setState({formError:true})
+        }
+    
     }
 
     componentDidMount(){
