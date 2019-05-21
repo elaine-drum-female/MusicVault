@@ -5,7 +5,7 @@ import FormField from '../../utils/Form/formfield';
 import { update, generateData, isFormValid, populateOptionFields, resetFields } from '../../utils/Form/formActions';
 
 import { connect } from 'react-redux';
-import { fetchBrands, fetchWoods, addProduct } from '../../../actions/products_actions';
+import { fetchBrands, fetchWoods, addProduct, clearProduct } from '../../../actions/products_actions';
 
 class AddProduct extends Component {
 
@@ -213,6 +213,8 @@ class AddProduct extends Component {
         setTimeout(()=>{
             this.setState({
                 formSuccess: false
+            }, () => {
+                this.props.dispatch(clearProduct());
             })
         },3000)
     }
