@@ -15,7 +15,7 @@ class ManageWoods extends Component {
                 element: 'input',
                 value: '',
                 config:{
-                    label: 'Brand name',
+                    
                     name: 'name_input',
                     type: 'text',
                     placeholder: 'Enter the wood'
@@ -119,10 +119,10 @@ class ManageWoods extends Component {
     }
 }
 
-const MapsToProps = (state) => {
+const MapStateToProps = (state) => {
     return {
         products: state.products
     }
 }
 
-export default connect(MapsToProps)(ManageWoods);
+export default connect(MapStateToProps)(ManageWoods);
