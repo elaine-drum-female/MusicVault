@@ -69,7 +69,7 @@ export function addProduct(datatoSubmit){
 export function clearProduct() {
     return {
         type: CLEAR_PRODUCT,
-        payload: request
+        payload: ''
     }
 }
 
