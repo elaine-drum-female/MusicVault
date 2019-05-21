@@ -228,7 +228,7 @@ class AddProduct extends Component {
 
         if(formIsValid) {
             this.props.dispatch(addProduct(dataToSubmit)).then(()=>{
-                if( this.props.products.addProduct.success){
+                if(this.props.products.addProduct.success){
                     this.resetFieldHandler();
                 }else{
                     this.setState({formError: true})
