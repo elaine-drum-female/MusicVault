@@ -86,7 +86,6 @@ export const resetFields = (formdata, formName) => {
     
     for(let key in newFormdata) {
         newFormdata[key].value = '';
-        newFormdata[key].value = false;
         newFormdata[key].touched = false;
         newFormdata[key].validationMessage = " ";
     }
