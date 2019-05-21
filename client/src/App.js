@@ -23,7 +23,7 @@ const App = () => {
         <Route exact path="/admin/add_product" component={Authorize(AddProduct, true)} />
         <Route exact path="/admin/manage_categories" component={Authorize(ManageCategories, true)} />
 
-        <Route exact path="/product_detail/:id" component={Authorize(ProductPage, false)} />
+        <Route exact path="/product_detail/:id" component={Authorize(ProductPage, null)} />
         <Route exact path="/register" component={Authorize(Register, false)} />
         <Route exact path="/register_login" component={Authorize(RegisterLogin, false)} />
 
