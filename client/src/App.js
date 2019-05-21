@@ -8,6 +8,7 @@ import Home from './components/Home';
 import RegisterLogin from './components/Register_login';
 import Register from './components/Register_login/register';
 import Shop from './components/Shop';
+import ProductPage from './components/Product';
 
 import UserDashboard from './components/PrivateDashboard';
 import AddProduct from './components/PrivateDashboard/Admin/add_product';
@@ -22,6 +23,7 @@ const App = () => {
         <Route exact path="/admin/add_product" component={Authorize(AddProduct, true)} />
         <Route exact path="/admin/manage_categories" component={Authorize(ManageCategories, true)} />
 
+        <Route exact path="/product_detail/:id" component={Authorize(ProductPage, false)} />
         <Route exact path="/register" component={Authorize(Register, false)} />
         <Route exact path="/register_login" component={Authorize(RegisterLogin, false)} />
 
