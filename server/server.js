@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 require('dotenv').config(); // make sure this is above anything requiring API key
-console.log(process.env.CLOUD_API_KEY);
+
 
 cloudinary.config({
     cloud_name: process.env.CLOUD_NAME,
@@ -268,7 +268,14 @@ app.post('/api/users/uploadimage',auth,admin,formidable(),(req,res)=>{
     })
 })
 
+app.get('/api/users/removeimage',auth,admin,(req,res)=>{
+    let image_id = req.query.public_id;
 
+    cloudinary.uploader.destroy(image_id,(error,result)=>{
+        if(error) return res.json({success:false,error});
+        res.status(200).send('ok');
+    })
+})
 
 
 
