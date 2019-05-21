@@ -4,7 +4,8 @@ import {
     FETCH_BRANDS,
     FETCH_WOODS,
     FETCH_PRODUCTS_TO_SHOP,
-    ADD_PRODUCT
+    ADD_PRODUCT,
+    CLEAR_PRODUCT
 
 } from '../actions/types';
 
@@ -26,6 +27,11 @@ export default function( state= {} , action) {
                 toShopSize: action.payload.size
             }
         case ADD_PRODUCT: 
+            return {
+                ...state,
+                addProduct:action.payload
+            }
+        case CLEAR_PRODUCT: 
             return {
                 ...state,
                 addProduct:action.payload
