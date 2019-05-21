@@ -56,9 +56,9 @@ export function fetchProductsToShop(skip, limit, filters = [],
 
 }
 
-export function addProduct(datatoSubmit){
+export function addProduct(dataToSubmit){
 
-    const request = axios.post(`${PRODUCT_SERVER}/article`,datatoSubmit)
+    const request = axios.post(`${PRODUCT_SERVER}/article`,dataToSubmit)
                     .then(response => response.data);
 
     return {
@@ -87,21 +87,18 @@ export function fetchBrands() {
     }
 }
 
-export function addBrand(datatoSubmit , existingBrands) {
-
-    const request = axios.post(`${PRODUCT_SERVER}/brand`, datatoSubmit)
-    .then(response => {
+export function addBrand(dataToSubmit, existingBrands){
+    const request = axios.post(`${PRODUCT_SERVER}/brand`,dataToSubmit)
+    .then(response=>{
         let brands = [
             ...existingBrands,
             response.data.brand
         ];
-
         return {
             success: response.data.success,
             brands
         }
     });
-
     return {
         type: ADD_BRAND,
         payload: request
