@@ -22,7 +22,7 @@ export default function( state= {} , action) {
         case ADD_BRAND:
             return {...state, 
                 addBrand: action.payload.success , 
-                brands: action.payload 
+                brands: action.payload.brands 
             }
         case FETCH_WOODS:
             return {...state, woods: action.payload}
