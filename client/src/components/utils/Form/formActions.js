@@ -80,3 +80,16 @@ export const populateOptionFields = (formdata, arraydata = [] , field) => {
     newFormdata[field].config.options = newArray;
     return newFormdata;
 }
+
+export const resetFields = (formdata, formName) => {
+    const newFormdata = {...formdata};
+    
+    for(let key in newFormdata) {
+        newFormdata[key].value = '';
+        newFormdata[key].value = false;
+        newFormdata[key].touched = false;
+        newFormdata[key].validationMessage = " ";
+    }
+
+        return newFormdata
+}
