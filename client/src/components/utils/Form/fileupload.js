@@ -43,7 +43,7 @@ class Fileupload extends Component {
         });
      }
 
-     
+
     onRemove = (id) => {
         axios.get(`/api/users/removeimage?public_id=${id}`).then(response=>{
             let images = this.state.uploadedFiles.filter(item=>{
@@ -72,6 +72,15 @@ class Fileupload extends Component {
             </div>
         ))
     )
+
+    static getDerivedStateFromProps(props,state){
+        if(props.reset){
+            return state = {
+                uploadedFiles:[]
+            }
+        }
+        return null;
+    }
 
     render() {
         return (
