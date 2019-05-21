@@ -2,6 +2,7 @@ import {
     PRODUCTS_BY_SELL, 
     PRODUCTS_BY_ARRIVAL,
     FETCH_BRANDS,
+    ADD_BRAND,
     FETCH_WOODS,
     FETCH_PRODUCTS_TO_SHOP,
     ADD_PRODUCT,
@@ -18,6 +19,11 @@ export default function( state= {} , action) {
             return {...state, byArrival: action.payload}
         case FETCH_BRANDS:
             return {...state, brands: action.payload}
+        case ADD_BRAND:
+            return {...state, 
+                addBrand: action.payload.success , 
+                brands: action.payload 
+            }
         case FETCH_WOODS:
             return {...state, woods: action.payload}
         case FETCH_PRODUCTS_TO_SHOP:
