@@ -3,7 +3,7 @@ import FormField from '../../utils/Form/formfield';
 import { update, generateData, isFormValid,resetFields} from '../../utils/Form/formActions';
 
 import { connect } from 'react-redux';
-import { fetchWoods } from '../../../actions/products_actions';
+import { fetchWoods , addWood } from '../../../actions/products_actions';
 
 class ManageWoods extends Component {
 
@@ -30,13 +30,99 @@ class ManageWoods extends Component {
         }
     }
 
+    showCategoryItems = () => (
+        this.props.products.woods ?
+            this.props.products.woods.map((item,i)=>(
+                <div className="category_item" key={item._id}>
+                    {item.name}
+                </div>
+            ))
+        :null
+    )
+
+    updateForm = (element) => {
+        const newFormdata = update(element,this.state.formdata,'woods');
+        this.setState({
+            formError: false,
+            formdata: newFormdata
+        });
+    }
+
+    resetFieldsHandler = () =>{
+        const newFormdata = resetFields(this.state.formdata,'woods');
+
+        this.setState({
+            formdata: newFormdata,
+            formSuccess:true
+        });
+    }
+
+    submitForm= (event) =>{
+        event.preventDefault();
+        
+        let dataToSubmit = generateData(this.state.formdata,'woods');
+        let formIsValid = isFormValid(this.state.formdata,'woods')
+        let existingWoods = this.props.products.woods;
+
+        if(formIsValid){
+            this.props.dispatch(addWood(dataToSubmit,existingWoods)).then(response=>{
+                if(response.payload.success){
+                    this.resetFieldsHandler();
+                }else{
+                    this.setState({formError:true})
+                }
+           })
+        } else {
+            this.setState({
+                formError: true
+            })
+        }
+    }
+
+    componentDidMount(){
+        this.props.dispatch(fetchWoods());
+    }
+
+
     render() {
         return (
-            <div>
-                woods
+            <div className="admin_category_wrapper">
+            <h1>Woods</h1>
+            <div className="admin_two_column">
+                <div className="left">
+                    <div className="brands_container">
+                        {this.showCategoryItems()}
+                    </div>
+                </div>
+                <div className="right">
+                    <form onSubmit={(event)=> this.submitForm(event)}>
+                        <FormField
+                            id={'name'}
+                            formdata={this.state.formdata.name}
+                            change={(element) => this.updateForm(element)}
+                        />
+
+                        {this.state.formError ?
+                            <div className="error_label">
+                                Please check your data
+                            </div>
+                            : null}
+                            <button onClick={(event) => this.submitForm(event)}>
+                                Add wood
+                            </button>
+                    </form>
+                </div>
+
             </div>
+        </div>
         );
     }
 }
 
-export default ManageWoods;
+const MapsToProps = (state) => {
+    return {
+        products: state.products
+    }
+}
+
+export default connect(MapsToProps)(ManageWoods);
