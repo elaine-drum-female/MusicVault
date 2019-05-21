@@ -87,7 +87,7 @@ export function fetchBrands() {
     }
 }
 
-export function addBrands(datatoSubmit , existingBrands) {
+export function addBrand(datatoSubmit , existingBrands) {
 
     const request = axios.post(`${PRODUCT_SERVER}/brand`, datatoSubmit)
     .then(response => {
