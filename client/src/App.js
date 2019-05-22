@@ -13,13 +13,14 @@ import ProductPage from './components/Product';
 import UserDashboard from './components/PrivateDashboard';
 import AddProduct from './components/PrivateDashboard/Admin/add_product';
 import ManageCategories from './components/PrivateDashboard/Admin/manage_categories';
-
+import UserCart from './components/PrivateDashboard/cart';
 
 const App = () => {
   return (
     <Wrapper>
       <Switch>
         <Route exact path="/user/dashboard" component={Authorize(UserDashboard, true)} />
+        <Route exact path="/user/shopping-cart" component={Authorize(UserCart, true)} />
         <Route exact path="/admin/add_product" component={Authorize(AddProduct, true)} />
         <Route exact path="/admin/manage_categories" component={Authorize(ManageCategories, true)} />
 
