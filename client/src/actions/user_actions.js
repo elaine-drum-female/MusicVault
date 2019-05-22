@@ -50,3 +50,10 @@ export function logoutUser() {
         payload :request
     }
 }
+
+export function addToCart(_id) {
+    return {
+        type: ADD_TO_CART_USER ,
+        payload: ''
+    }
+}
