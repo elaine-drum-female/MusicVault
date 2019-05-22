@@ -105,8 +105,15 @@ class UserCart extends Component {
                             :
                             this.showNoItemMessage()
                             }
-                        
                    </div>
+                   {
+                        this.state.showTotal ?
+                            <div className="paypal_button_container">
+                               Paypal
+                            </div>
+                        :null
+
+                    }
                 </div>
             </UserLayout>
         );
