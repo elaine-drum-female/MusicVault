@@ -62,7 +62,7 @@ const ProdInfo = (props) => {
                 <MyButton 
                     type="add_to_cart_link"
                     runAction={() => {
-                        console.log("Add to cart")
+                        props.addToCart(detail._id)
                     }}
                 />
             </div>
