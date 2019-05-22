@@ -7,6 +7,16 @@ import faFrown from '@fortawesome/fontawesome-free-solid/faFrown'
 import faSmile from '@fortawesome/fontawesome-free-solid/faSmile'
 
 class UserCart extends Component {
+
+    state = {
+        loading: true,
+        total:0,
+        showTotal: false,
+        showSuccess: false,
+    }
+
+    
+
     render() {
         return (
             <UserLayout>
