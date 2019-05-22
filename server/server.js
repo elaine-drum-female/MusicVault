@@ -2,6 +2,8 @@
 const express = require('express');
 const app = express();
 
+const async = require('async');
+
 const formidable = require('express-formidable');
 const cloudinary = require('cloudinary');
 
@@ -34,6 +36,7 @@ const { User } = require('./models/user');
 const { Brand } = require('./models/brand');
 const { Wood } = require('./models/wood');
 const { Product } = require('./models/product');
+const { Payment } = require('./models/payment');
 
 // Middleware
 const { auth } = require('./middleware/auth');
@@ -345,11 +348,77 @@ app.get('/api/users/removeFromCart',auth,(req,res)=>{
 })
 
 
+app.post('/api/users/successBuy',auth,(req,res)=>{
+    let history = [];
+    let transactionData = {}
+    const date = new Date();
+    const po = `PO-${date.getSeconds()}${date.getMilliseconds()}-${SHA1(req.user._id).toString().substring(0,8)}`
 
+    // Get user history
+    req.body.cartDetail.forEach((item)=>{
+        history.push({
+            porder: po,
+            dateOfPurchase: Date.now(),
+            name: item.name,
+            brand: item.brand.name,
+            id: item._id,
+            price: item.price,
+            quantity: item.quantity,
+            paymentId: req.body.paymentData.paymentID
+        })
+    })
 
+    //Payments
+    transactionData.user = {
+        id: req.user._id,
+        name: req.user.name,
+        lastname: req.user.lastname,
+        email: req.user.email
+    }
+    transactionData.data = {
+        ...req.body.paymentData,
+        porder: po
+    };
+    
+    transactionData.product = history;
 
+    User.findOneAndUpdate(
+        { _id: req.user._id },
+        { $push:{ history:history }, $set:{ cart:[] } },
+        { new: true },
+        (err,user)=>{
+            if(err) return res.json({success:false,err});
 
-
+            const payment = new Payment(transactionData);
+            payment.save((err,doc)=>{
+                if(err) return res.json({success:false,err});
+                let products = [];
+                doc.product.forEach(item=>{
+                    products.push({id:item.id,quantity:item.quantity})
+                 })
+              
+                async.eachSeries(products,(item,callback)=>{ 
+                    Product.update(
+                        {_id: item.id},
+                        { $inc:{
+                            "sold": item.quantity
+                        }},
+                        {new:false},
+                        callback
+                    )
+                },(err)=>{
+                    if(err) return res.json({success:false,err});
+                    res.status(200).json({
+                        success:true,
+                        cart: user.cart,
+                        cartDetail:[]
+                    })
+                })
+            });
+        }
+    )
+});
+    
 
 const port = process.env.PORT || 3005;
 
