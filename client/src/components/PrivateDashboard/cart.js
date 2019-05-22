@@ -85,7 +85,10 @@ class UserCart extends Component {
     }
 
     transactionSuccess = (data) => {
-        
+        this.setState({
+            showTotal: false,
+            showSuccess: true
+        })
     }
 
     render() {
