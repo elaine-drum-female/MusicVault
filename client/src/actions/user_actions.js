@@ -109,12 +109,12 @@ export function removeCartItem(id) {
 
 }
 
-export function onSuccessBuyUser(data) {
-    const request = axios.post(`${USER_SERVER}/successBuy`, data)
-        .then(response => response.data);
-        
+export function onSuccessBuyUser(data){ 
+    const request = axios.post(`${USER_SERVER}/successBuy`,data)
+                    .then(response => response.data);
+
     return {
-        type:ON_SUCCESS_BUY_USER ,
+        type: ON_SUCCESS_BUY_USER,
         payload: request
     }
 }
