@@ -14,6 +14,7 @@ import UserDashboard from './components/PrivateDashboard';
 import AddProduct from './components/PrivateDashboard/Admin/add_product';
 import ManageCategories from './components/PrivateDashboard/Admin/manage_categories';
 import UserCart from './components/PrivateDashboard/cart';
+import UpdateProfile from './components/PrivateDashboard/update_profile';
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
         <Route exact path="/user/shopping-cart" component={Authorize(UserCart, true)} />
         <Route exact path="/admin/add_product" component={Authorize(AddProduct, true)} />
         <Route exact path="/admin/manage_categories" component={Authorize(ManageCategories, true)} />
+        <Route exact path="/user/user_profile" component={Authorize(UpdateProfile, true)} />
 
         <Route exact path="/product_detail/:id" component={Authorize(ProductPage, null)} />
         <Route exact path="/register" component={Authorize(Register, false)} />
