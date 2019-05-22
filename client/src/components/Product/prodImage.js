@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import ImageLightBox from '../utils/lightbox';
+import ImageLightBox from '../utils/lightbox';
 
 
 class ProdImage extends Component {
@@ -60,7 +60,7 @@ class ProdImage extends Component {
         if(images.length > 0){
             return images[0].url
         }else{
-            return `/images/image_not_availble.png`
+            return `/images/image_not_available.png`
         }
     }
 
@@ -78,7 +78,7 @@ class ProdImage extends Component {
                 <div className="main_thumbs">
                     { this.showThumbs(detail)}
                 </div>
-                {/* {
+                {
                     this.state.lightbox ?
                         <ImageLightBox
                             id={detail.id}
@@ -88,7 +88,7 @@ class ProdImage extends Component {
                             onclose={()=> this.handleLightBoxClose()}
                         />
                     :null
-                } */}
+                }
             </div>
         );
     }
