@@ -370,7 +370,7 @@ app.post('/api/users/successBuy', auth, (req, res)=>{
         id: req.user._id,
         name: req.user.name,
         lastname: req.user.lastname,
-        eail: req.user.email
+        email: req.user.email
     }
     transactionData.data = req.body.paymentData;
     transactionData.product = history;
@@ -385,6 +385,28 @@ app.post('/api/users/successBuy', auth, (req, res)=>{
             const payment = new Payment(transactionData);
             payment.save((err, doc)=> {
                 if(err) return res.json({success:false, err});
+                let products = [];
+                console.log(doc);
+                doc.product.forEach(item => {
+                    products.push({id:item._id, quantity:item.quantity})
+                })
+                async.eachSeries(products, (item, callback) => {
+                    Product.update(
+                        {_id: item.id},
+                        { $inc: {
+                            "sold":item.quantity
+                        }},
+                        {new: false},
+                        callback
+                    )
+                }, (err) => {
+                        if(err) return res.json({success:false, err})
+                        res.status(200).json({
+                            success:true,
+                            cart: user.cart,
+                            cartDetail:[]
+                        })
+                })
             })
         }
     )
