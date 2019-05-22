@@ -1,5 +1,5 @@
 import React from 'react';
-// import MyButton from '../utils/button';
+import MyButton from '../utils/button';
 
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import faTruck from '@fortawesome/fontawesome-free-solid/faTruck';
@@ -55,6 +55,20 @@ const ProdInfo = (props) => {
         </div>
     )
 
+    const showProdActions = (detail) => (
+        <div className="product_actions">
+            <div className="price">$ {detail.price} </div>
+            {/* <div className="cart">
+                <MyButton 
+                    type="add_to_cart_link"
+                    runAction={() => {
+                        console.log("Add to cart")
+                    }}
+                />
+            </div> */}
+        </div>
+    )
+
 
     const detail = props.detail;
 
@@ -65,7 +79,7 @@ const ProdInfo = (props) => {
                 {detail.description}
             </p>
             { showProdTags(detail)}
-            {/* { showProdActions(detail)} */}
+            { showProdActions(detail)}
             { showProdSpecifications(detail)}
         </div>
     );
