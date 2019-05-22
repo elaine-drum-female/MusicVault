@@ -5,9 +5,9 @@ import UserProductBlock from '../utils/User/product_block';
 import { connect } from 'react-redux';
 import { getCartItems} from '../../actions/user_actions';
 
-// import FontAWesomeIcon from '@fortawesome/react-fontawesome';
-// import faFrown from '@fortawesome/fontawesome-free-solid/faFrown'
-// import faSmile from '@fortawesome/fontawesome-free-solid/faSmile'
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import faFrown from '@fortawesome/fontawesome-free-solid/faFrown'
+import faSmile from '@fortawesome/fontawesome-free-solid/faSmile'
 
 class UserCart extends Component {
 
@@ -29,12 +29,25 @@ class UserCart extends Component {
                 });
                 this.props.dispatch(getCartItems(cartItems,user.userData.cart))
                 .then(()=>{
-                    // if(this.props.user.cartDetail.length > 0){
-                    //     this.calculateTotal(this.props.user.cartDetail);
-                    // }
+                    if(this.props.user.cartDetail.length > 0){
+                        this.calculateTotal(this.props.user.cartDetail);
+                    }
                 })
             }
         }
+    }
+
+    calculateTotal = (cartDetail) => {
+        let total = 0;
+
+        cartDetail.forEach(item=>{
+            total += parseInt(item.price, 10) * item.quantity
+        });
+
+        this.setState({
+            total,
+            showTotal: true
+        });
     }
 
     // removeFromCart = (id) => {
@@ -50,6 +63,15 @@ class UserCart extends Component {
     //     })
     // }
 
+    showNoItemMessage = () =>(
+        <div className="cart_no_items">
+            <FontAwesomeIcon icon={faFrown}/>
+            <div>
+                You have no items
+            </div>
+        </div>
+    )
+
     render() {
         return (
             <UserLayout>
@@ -61,6 +83,29 @@ class UserCart extends Component {
                             type="cart"
                             removeItem={(id)=> this.removeFromCart(id)}
                         />
+                        { this.state.showTotal ?
+                            <div>
+                                <div className="user_cart_sum">
+                                    <div>
+                                        Total amount: $ {this.state.total}
+                                    </div>
+                                </div>
+                            </div>
+                            : 
+                            this.state.showSuccess ?
+                                <div className="cart_success">
+                                    <FontAwesomeIcon icon={faSmile}/>
+                                    <div>
+                                        THANK YOU
+                                    </div>
+                                    <div>
+                                        YOUR ORDER IS NOW COMPLETE
+                                    </div>
+                                </div>
+                            :
+                            this.showNoItemMessage()
+                            }
+                        
                    </div>
                 </div>
             </UserLayout>
