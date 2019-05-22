@@ -1,5 +1,5 @@
 import React from 'react';
-// import MyButton from '../utils/button';
+import MyButton from '../utils/button';
 
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import faTruck from '@fortawesome/fontawesome-free-solid/faTruck';
@@ -58,14 +58,14 @@ const ProdInfo = (props) => {
     const showProdActions = (detail) => (
         <div className="product_actions">
             <div className="price">$ {detail.price} </div>
-            {/* <div className="cart">
+            <div className="cart">
                 <MyButton 
                     type="add_to_cart_link"
                     runAction={() => {
                         console.log("Add to cart")
                     }}
                 />
-            </div> */}
+            </div>
         </div>
     )
 
