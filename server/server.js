@@ -450,7 +450,7 @@ app.post('/api/site/site_data',auth,admin,(req,res)=>{
             if(err) return res.json({success:false,err});
             return res.status(200).send({
                 success: true,
-                siteInfo: doc.siteInfo
+                siteInfo: doc
             })
         }
     )
