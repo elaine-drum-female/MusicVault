@@ -20,10 +20,10 @@ const links = [
 
 
 const admin = [
-    {
-        name:'Site Info',
-        linkTo:'/admin/site_info'
-    },
+    // {
+    //     name:'Site Info',
+    //     linkTo:'/admin/site_info'
+    // },
     {
         name:'Add products',
         linkTo:'/admin/add_product'
