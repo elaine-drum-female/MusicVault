@@ -32,7 +32,7 @@ const Footer = ({data}) => {
                                 />
                                 <div className="nfo">
                                     <div>Phone</div>
-                                    <div>{data.siteData[0].phone}</div>
+                                    <div>817-480-3431</div>
                                 </div>
                             </div>
                             <div className="tag">
@@ -42,7 +42,7 @@ const Footer = ({data}) => {
                                 />
                                 <div className="nfo">
                                     <div>Working hours</div>
-                                    <div>{data.siteData[0].hours}</div>
+                                    <div>8-5</div>
                                 </div>
                             </div>
                             <div className="tag">
@@ -52,7 +52,7 @@ const Footer = ({data}) => {
                                 />
                                 <div className="nfo">
                                     <div>Email</div>
-                                    <div>{data.siteData[0].email}</div>
+                                    <div>ouatfan2011@gmail.com</div>
                                 </div>
                             </div>
                         </div>
