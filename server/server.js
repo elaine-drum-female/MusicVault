@@ -30,7 +30,7 @@ app.use(cookieParser());
 const mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.MONGODB_URI);
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/waves");
 
 // Models
 const { User } = require('./models/user');
@@ -450,7 +450,7 @@ app.post('/api/site/site_data',auth,admin,(req,res)=>{
             if(err) return res.json({success:false,err});
             return res.status(200).send({
                 success: true,
-                siteInfo: doc
+                siteInfo: doc.siteInfo
             })
         }
     )
