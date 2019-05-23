@@ -1,6 +1,6 @@
 import { 
     GET_SITE_DATA
-} from './types';
+} from '../actions/types';
 
 //Return the state
 export default function( state= {} , action) {
