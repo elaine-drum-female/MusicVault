@@ -5,11 +5,12 @@ So for my final project I wanted to create something that I am passionate about,
 
 # FOR TESTING PURPOSES
 PLEASE use the following credentials to enter MUSICVAULT:
-NON ADMIN:
+(ONLY USE IF YOUR OWN REGISTRATION SOMEHOW DOES NOT WORK AT THE TIME)
+# NON ADMIN:
 rosebell@haha.com
 password
 
-ADMIN:
+# ADMIN:
 elaine3@haha.com
 password1234
 
