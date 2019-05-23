@@ -61,8 +61,7 @@ const HeroSlider = (props) => {
                     <div className="featured_action">
                         <div className="tag title">{item.lineOne}</div>
                         <div className="tag low_title">{item.lineTwo}</div>
-                    </div>
-                    <div>
+                        <div>
                         <LinkButton
                             type="default"
                             title={item.linkTitle}
@@ -71,6 +70,7 @@ const HeroSlider = (props) => {
                                 margin:'10px 0 0 0'
                             }}
                          />
+                    </div>
                     </div>
                 </div>
             </div>
