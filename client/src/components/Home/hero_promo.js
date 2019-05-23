@@ -21,8 +21,13 @@ const HeroPromo = (props) => {
             }}
         >
             
-            <div className="tag title">{promotion.lineOne}</div>
-            <div className="tag low_title">{promotion.lineTwo}</div>
+            <div className="featured_action">
+                <p className="tag title"
+                style={{margin:0}}>{promotion.lineOne}</p>
+                <p className="tag low_title"
+                style={{margin:0, marginBottom:20}}
+                >{promotion.lineTwo}</p>
+                    </div>
             <div>
                 <LinkButton
                     type="promo"
