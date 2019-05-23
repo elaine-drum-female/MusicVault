@@ -6,9 +6,9 @@ const HeroSlider = (props) => {
 
     const slides = [
         {
-            img:'/images/featured/featured_home.jpg',
-            lineOne:'Fender',
-            lineTwo:'Custom shop',
+            img:'/images/featured/guitars-for-sale.jpg',
+            lineOne:'"One Musician\'s Outgrowth',
+            lineTwo:'can be Someone else\'s beginning"',
             linkTitle:'Shop now',
             linkTo:'/shop'
         },
@@ -54,14 +54,17 @@ const HeroSlider = (props) => {
             <div key={i}>
                 <div className="featured_image"
                     style={{
-                        background:`url(${item.img})`,
-                        height:`${window.innerHeight}px`
+                        background:`url(${item.img}) `,
+                        height:`100vh`,
                     }}
                 >
                     <div className="featured_action">
-                        <div className="tag title">{item.lineOne}</div>
-                        <div className="tag low_title">{item.lineTwo}</div>
-                        <div>
+                        <p className="tag title"
+                        style={{margin:0}}>{item.lineOne}</p>
+                        <p className="tag low_title"
+                        style={{margin:0, marginBottom:20}}
+                        >{item.lineTwo}</p>
+                    <div>
                         <LinkButton
                             type="default"
                             title={item.linkTitle}
