@@ -22,7 +22,7 @@ const Footer = ({data}) => {
                                 />
                                 <div className="nfo">
                                     <div>Address</div>
-                                    <div>testing</div>
+                                    <div>1234 Burview St, Nowhere, TX 12345</div>
                                 </div>
                             </div>
                             <div className="tag">
