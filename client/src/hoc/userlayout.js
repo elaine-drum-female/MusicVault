@@ -64,7 +64,7 @@ const UserLayout = (props) => {
                     }
 
                 </div>
-                <div className="user_right">
+                <div className="user_right_nav">
                     { props.children }
                 </div>
             </div>

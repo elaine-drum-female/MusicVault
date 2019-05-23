@@ -13,6 +13,13 @@ body {
     min-height: 75vh;
     /* padding-top: 65px; */
 }
+
+.shop_page_container {
+    min-height: 75vh;
+    padding-top: 65px;
+}
+
+
 .main_loader {
     text-align: center;
     margin-top: 100px;
@@ -615,6 +622,8 @@ footer .business_nfo .nfo {
 
 .shop_wrapper {
     display:flex;
+    margin-top:20px;
+    padding:10px 0;
 }
 
 .shop_wrapper .left {
@@ -653,6 +662,7 @@ footer .business_nfo .nfo {
 .product_detail_wrapper {
     display: flex;   
     margin-bottom: 140px;
+    padding-top:20px;
 }
 
 .product_detail_wrapper .right{
@@ -811,28 +821,32 @@ footer .business_nfo .nfo {
     min-height: 700px;
 }
 
-.user_container .user_left_nav {
+/* .user_container .user_left_nav {
     border-right: 1px solid #f8f8f8; 
-}
+} */
 
 .user_container .user_left_nav .links a {
     display: block;
-    border-bottom: 1px solid #dddddd;
+    /* border-bottom: 1px solid #dddddd; */
     font-size: 20px;
     font-weight: 300;
     padding: 10px 0px;
     width: 280px;
 }
 
-.user_container  .user_right {
+.user_container, .user_right_nav {
     flex-grow: 1;
-    padding: 0 0 0 29px;
+    padding: 0;
 }
 
 .user_container .user_nfo_panel {
     background: #f8f8f8;
     padding: 20px;
-    margin-top: 20px;
+    /* margin-top: 20px; */
+}
+
+.user_left_nav, .user_right_nav {
+    margin-top:100px;
 }
 
 .user_container .user_nfo_panel h1 {
